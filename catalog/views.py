@@ -364,11 +364,15 @@ def newItem():
     """ show web page where a new item can be added """
     categories = session.query(Category).all()
     if request.method == 'POST':
-        if request.form['name'] and request.form['description'] and request.form['cat_name']:
+        if request.form['name'] and request.form['cat_name']:
             cat_name = request.form['cat_name']
             category = session.query(Category).filter_by(name=cat_name).first()
             cat_id = category.id
-            newItem = Item(name=request.form['name'], description=request.form['description'], cat_id=cat_id, user_id=login_session['user_id'])
+            if request.form['description']:
+                description = request.form['description']
+            else:
+                description = ''
+            newItem = Item(name=request.form['name'], description=description, cat_id=cat_id, user_id=login_session['user_id'])
             session.add(newItem)
             session.commit()
             flash("{} successfully added!".format(newItem.name))
