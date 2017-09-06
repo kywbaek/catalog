@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+            <div class="row body_row">
+                <div class="col-md-3 catagory">
+                    <div>
+                        <h2 class="title">Catagory</h2>
+                        <a href="{{url_for('showItems', category_name=curCategory.name)}}">{{ curCategory.name }}</a>
+                        <br>
+                        <h2 class="title">Item</h2>
+                        <p class="name">{{ curItem.name }}</p>
+                        <form action="{{url_for('showMain')}}">
+                            <input type="submit" value="Home">
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-md-9 item">
+                    <div>
+                        <p class="desc">{{ curItem.description }}</p>
+                        {% if 'username' in session %}
+                            <form action="{{url_for('editItem', category_name=curCategory.name, item_name=curItem.name)}}">
+                                <input type="submit" value="Edit">
+                            </form>
+                            <form action="{{url_for('deleteItem', category_name=curCategory.name, item_name=curItem.name)}}">
+                                <input type="submit" value="Delete">
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+{% endblock %}

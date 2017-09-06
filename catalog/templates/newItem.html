@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+            <div class="row">
+                <div class="col-md-12 form">
+                    <h2 class="title">Add New Item</h2>
+
+                    <form action="{{ url_for('newItem')}}" method = 'post'>
+                        <dl>
+                            <dt>Name:</dt>
+                            <dd><input type ='text' size='80' name='name' placeholder='name'></dd>
+                            <dt>Description:</dt>
+                            <dd><textarea name = 'description' rows='5' cols='80' placeholder='description'></textarea></dd>
+                            <dt>Category:</dt>
+                                {% for category in categories %}
+                                    <dd><input type ='radio' name='cat_name' value='{{ category.name }}'>{{ category.name }}</dd>
+                                {% endfor %}
+                        </dl>
+
+                        <input type="submit" value="Add">
+                    </form>
+
+                    <form action="{{url_for('showMain')}}">
+                        <input type="submit" value="Cancel">
+                    </form>
+                </div>
+            </div>
+{% endblock %}

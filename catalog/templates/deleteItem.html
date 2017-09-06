@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+            <div class="row">
+                <div class="col-md-12 form">
+                    <h2 class="title">Delete Item ({{ curItem.name }})</h2>
+                    <h4>Are you sure you want to delete {{ curItem.name }}?</h4>
+
+                    <form action="{{url_for('deleteItem', item_name=curItem.name, category_name=curCategory.name)}}" method="post">
+                        <input type="submit" value="Delete">
+                    </form>
+
+                    <form action="{{url_for('showMain')}}">
+                        <input type="submit" value="Cancel">
+                    </form>
+                </div>
+            </div>
+{% endblock %}

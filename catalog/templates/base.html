@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Catalog</title>
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <link rel=stylesheet href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="row title_row">
+                <div class="col-md-8">
+                    <h1 class="app_title">Catalog App</h1>
+                </div>
+
+                <div class="col-md-4">
+                    {% if 'username' not in session %}
+                        <form action="{{url_for('showLogin')}}">
+                            <input type="submit" value="Log In" class="loginButton">
+                        </form>
+                    {% else %}
+                        <form action="{{url_for('disconnect')}}">
+                            <input type="submit" value="Log Out" class="loginButton">
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+            {% block content %}
+            {% endblock %}
+        </div>
+        <script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    </body>
+</html>
