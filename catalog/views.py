@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
-app = Flask(__name__)
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -15,6 +14,8 @@ import httplib2
 import json
 from flask import make_response
 import requests
+
+app = Flask(__name__)
 
 engine = create_engine('sqlite:///catalog.db')
 Base.metadata.bind = engine
