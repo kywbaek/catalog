@@ -278,7 +278,7 @@ def showMain():
     return render_template('main.html', categories=categories, latestItems=latestItems)
 
 
-@app.route('/catalog/<category_name>/items')
+@app.route('/catalog/<path:category_name>/items')
 def showItems(category_name):
     """ show items for the selected category """
     categories = session.query(Category).all()
@@ -289,7 +289,7 @@ def showItems(category_name):
     return render_template('items.html', categories=categories, items=items, curCategory=curCategory, num_items=num_items)
 
 
-@app.route('/catalog/<category_name>/<item_name>')
+@app.route('/catalog/<path:category_name>/<path:item_name>')
 def showItem(category_name, item_name):
     """ show information about the selected item """
     curCategory = session.query(Category).filter_by(name=category_name).first()
@@ -297,7 +297,7 @@ def showItem(category_name, item_name):
     return render_template('item.html', curItem=curItem, curCategory=curCategory)
 
 
-@app.route('/catalog/<category_name>/<item_name>/edit', methods=['GET', 'POST'])
+@app.route('/catalog/<path:category_name>/<path:item_name>/edit', methods=['GET', 'POST'])
 def editItem(category_name, item_name):
     """ show web page where the selected item can be edited """
     categories = session.query(Category).all()
@@ -326,7 +326,7 @@ def editItem(category_name, item_name):
     return render_template('editItem.html', curItem=curItem, curCategory=curCategory, categories=categories)
 
 
-@app.route('/catalog/<category_name>/<item_name>/delete', methods=['GET', 'POST'])
+@app.route('/catalog/<path:category_name>/<path:item_name>/delete', methods=['GET', 'POST'])
 def deleteItem(category_name, item_name):
     """ show web page where the selected item can be deleted """
     curCategory = session.query(Category).filter_by(name=category_name).first()
