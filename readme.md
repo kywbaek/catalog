@@ -28,5 +28,7 @@ You will develop a web application that provides a list of items within a variet
     - From the command line, type `python initial_data.py`
 3. Launch the application.
     - From the command line, type `python views.py`
- 4. Accessing the application.
+4. Accessing the application.
     - Open a web browser and type `http://localhost:8000` or `http://0.0.0.0:8000` on the address bar
+5. Endpoints
+    - Access `http://localhost:8000/catalog/<data>.json` where `<data>` can be `catalog`, `category`, `item`, or `user`
