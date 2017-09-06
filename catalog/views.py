@@ -292,7 +292,7 @@ def showMain():
 @app.route('/catalog/<path:category_name>/items')
 def showItems(category_name):
     """ show items for the selected category """
-    categories = session.query(Category).all()
+    categories = session.query(Category).order_by(Category.name).all()
     curCategory = session.query(Category).filter_by(name=category_name).first()
     cat_id = curCategory.id
     items = session.query(Item).filter_by(cat_id=cat_id).all()
@@ -312,7 +312,7 @@ def showItem(category_name, item_name):
 @login_required
 def editItem(category_name, item_name):
     """ show web page where the selected item can be edited """
-    categories = session.query(Category).all()
+    categories = session.query(Category).order_by(Category.name).all()
     curCategory = session.query(Category).filter_by(name=category_name).first()
     cat_id = curCategory.id
     curItem = session.query(Item).filter_by(name=item_name, cat_id=cat_id).first()
@@ -362,7 +362,7 @@ def deleteItem(category_name, item_name):
 @login_required
 def newItem():
     """ show web page where a new item can be added """
-    categories = session.query(Category).all()
+    categories = session.query(Category).order_by(Category.name).all()
     if request.method == 'POST':
         if request.form['name'] and request.form['cat_name']:
             cat_name = request.form['cat_name']
@@ -383,7 +383,7 @@ def newItem():
 @app.route('/catalog/catalog.json')
 def catalogJSON():
     """ JSON endpoint for catalog """
-    categories = session.query(Category).all()
+    categories = session.query(Category).order_by(Category.id).all()
     items = session.query(Item).all()
     cat_list = [c.serialize for c in categories]
     item_list = [i.serialize for i in items]
@@ -401,7 +401,7 @@ def catalogJSON():
 
 @app.route('/catalog/category.json')
 def categoryJSON():
-    categories = session.query(Category).all()
+    categories = session.query(Category).order_by(Category.id).all()
     return jsonify(Category=[c.serialize for c in categories])
 
 
