@@ -22,17 +22,17 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
-# Create anti-forgery state token
 @app.route('/login')
 def showLogin():
+    """ create anti-forgery state token """
     state = ''.join(random.choice(string.ascii_uppercase + string.digits)
                     for x in xrange(32))
     login_session['state'] = state
     return render_template('login.html', STATE=state)
 
 
-# User Helper Functions
 def createUser(login_session):
+    """ User helper function """
     newUser = User(name=login_session['username'], email=login_session[
                    'email'], picture=login_session['picture'])
     session.add(newUser)
@@ -42,11 +42,13 @@ def createUser(login_session):
 
 
 def getUserInfo(user_id):
+    """ User helper function """
     user = session.query(User).filter_by(id=user_id).first()
     return user
 
 
 def getUserID(email):
+    """ User helper function """
     try:
         user = session.query(User).filter_by(email=email).one()
         return user.id
@@ -56,6 +58,7 @@ def getUserID(email):
 
 @app.route('/gconnect', methods=['POST'])
 def gconnect():
+    """ sign in with google account """
     # Validate state token
     if request.args.get('state') != login_session['state']:
         response = make_response(json.dumps('Invalid state parameter.'), 401)
@@ -145,6 +148,7 @@ def gconnect():
 
 @app.route('/fbconnect', methods=['POST'])
 def fbconnect():
+    """ sign in with facebook account """
     if request.args.get('state') != login_session['state']:
         response = make_response(json.dumps('Invalid state parameter.'), 401)
         response.headers['Content-Type'] = 'application/json'
@@ -152,7 +156,7 @@ def fbconnect():
     access_token = request.data
     print "access_token received %s" % access_token
 
-    # Exchange client token for long-lived server-side token with GET / oauth / access_token/grant_type=fb_exchange_token&client_id={app-id}&client_secret={app-secret}&fb_exchange_token={short-lived-token}
+    # Exchange client token for long-lived server-side token with GET / oauth / access_token /
     app_id = json.loads(open('fb_client_secrets.json', 'r').read())['web']['app_id']
     app_secret = json.loads(open('fb_client_secrets.json', 'r').read())['web']['app_secret']
     url = 'https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id=%s&client_secret=%s&fb_exchange_token=%s' % (app_id, app_secret, access_token)
@@ -163,9 +167,6 @@ def fbconnect():
     # Use token to get user info from API
     userinfo_url = 'https://graph.facebook.com/v2.8/me'
     # get access token
-
-    # token = 'access_token=' + data['access_token']
-
     '''
       Due to the formatting for the result from the server token exchange we have to
       split the token first on commas and select the first index which gives us the key : value
@@ -214,6 +215,7 @@ def fbconnect():
 
 @app.route('/gdisconnect')
 def gdisconnect():
+    """ sign out from google account """
     access_token = login_session['access_token']
     url = 'https://accounts.google.com/o/oauth2/revoke?token=%s' % access_token
     h = httplib2.Http()
@@ -223,6 +225,7 @@ def gdisconnect():
 
 @app.route('/fbdisconnect')
 def fbdisconnect():
+    """ sign out from facebook account """
     facebook_id = login_session['facebook_id']
     access_token = login_session['access_token']
     url = 'https://graph.facebook.com/%s/permissions?access_token=%s' % (facebook_id, access_token)
@@ -233,6 +236,7 @@ def fbdisconnect():
 
 @app.route('/disconnect')
 def disconnect():
+    """ log out from any account """
     if 'provider' in login_session:
         if login_session['provider'] == 'google':
             status_result = gdisconnect()
@@ -267,6 +271,7 @@ def disconnect():
 @app.route('/')
 @app.route('/catalog')
 def showMain():
+    """ show main page for the application with categories and latest items """
     categories = session.query(Category).order_by(Category.name).all()
     latestItems = session.query(Item).order_by(Item.id.desc()).limit(10)
     return render_template('main.html', categories=categories, latestItems=latestItems)
@@ -274,6 +279,7 @@ def showMain():
 
 @app.route('/catalog/<category_name>/items')
 def showItems(category_name):
+    """ show items for the selected category """
     categories = session.query(Category).all()
     curCategory = session.query(Category).filter_by(name=category_name).first()
     cat_id = curCategory.id
@@ -284,6 +290,7 @@ def showItems(category_name):
 
 @app.route('/catalog/<category_name>/<item_name>')
 def showItem(category_name, item_name):
+    """ show information about the selected item """
     curCategory = session.query(Category).filter_by(name=category_name).first()
     curItem = session.query(Item).filter_by(name=item_name).first()
     return render_template('item.html', curItem=curItem, curCategory=curCategory)
@@ -291,6 +298,7 @@ def showItem(category_name, item_name):
 
 @app.route('/catalog/<category_name>/<item_name>/edit', methods=['GET', 'POST'])
 def editItem(category_name, item_name):
+    """ show web page where the selected item can be edited """
     categories = session.query(Category).all()
     curCategory = session.query(Category).filter_by(name=category_name).first()
     cat_id = curCategory.id
@@ -319,6 +327,7 @@ def editItem(category_name, item_name):
 
 @app.route('/catalog/<category_name>/<item_name>/delete', methods=['GET', 'POST'])
 def deleteItem(category_name, item_name):
+    """ show web page where the selected item can be deleted """
     curCategory = session.query(Category).filter_by(name=category_name).first()
     cat_id = curCategory.id
     curItem = session.query(Item).filter_by(name=item_name, cat_id=cat_id).first()
@@ -337,6 +346,7 @@ def deleteItem(category_name, item_name):
 
 @app.route('/catalog/items/new', methods=['GET', 'POST'])
 def newItem():
+    """ show web page where a new item can be added """
     if 'username' not in login_session:
         flash("You are not authorized to add new item")
         return redirect('/login')
@@ -356,6 +366,7 @@ def newItem():
 
 @app.route('/catalog.json')
 def catalogJSON():
+    """ JSON endpoint for catalog """
     categories = session.query(Category).all()
     items = session.query(Item).all()
     cat_list = [c.serialize for c in categories]
