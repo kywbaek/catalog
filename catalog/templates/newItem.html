@@ -12,7 +12,7 @@
                             <dd><textarea name = 'description' rows='5' cols='80' placeholder='description'></textarea></dd>
                             <dt>Category:</dt>
                                 {% for category in categories %}
-                                    <dd><input type ='radio' name='cat_name' value='{{ category.name }}'>{{ category.name }}</dd>
+                                    <dd><input type ='radio' name='cat_name' value='{{ category.name }}' required>{{ category.name }}</dd>
                                 {% endfor %}
                         </dl>
 
