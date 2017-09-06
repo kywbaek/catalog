@@ -309,6 +309,7 @@ def showItem(category_name, item_name):
 
 
 @app.route('/catalog/<path:category_name>/<path:item_name>/edit', methods=['GET', 'POST'])
+@login_required
 def editItem(category_name, item_name):
     """ show web page where the selected item can be edited """
     categories = session.query(Category).all()
@@ -316,9 +317,9 @@ def editItem(category_name, item_name):
     cat_id = curCategory.id
     curItem = session.query(Item).filter_by(name=item_name, cat_id=cat_id).first()
     user_id = curItem.user_id
-    if ('username' not in login_session) or (user_id != login_session['user_id']):
+    if user_id != login_session['user_id']:
         flash("You are not authorized to edit {}".format(item_name))
-        return redirect('/login')
+        return redirect(url_for('showMain'))
     if request.method == 'POST':
         oldname = curItem.name
         if request.form['name']:
@@ -338,15 +339,16 @@ def editItem(category_name, item_name):
 
 
 @app.route('/catalog/<path:category_name>/<path:item_name>/delete', methods=['GET', 'POST'])
+@login_required
 def deleteItem(category_name, item_name):
     """ show web page where the selected item can be deleted """
     curCategory = session.query(Category).filter_by(name=category_name).first()
     cat_id = curCategory.id
     curItem = session.query(Item).filter_by(name=item_name, cat_id=cat_id).first()
     user_id = curItem.user_id
-    if ('username' not in login_session) or (user_id != login_session['user_id']):
+    if user_id != login_session['user_id']:
         flash("You are not authorized to delete {}".format(item_name))
-        return redirect('/login')
+        return redirect(url_for('showMain'))
     if request.method == 'POST':
         oldname = curItem.name
         session.delete(curItem)
@@ -357,11 +359,9 @@ def deleteItem(category_name, item_name):
 
 
 @app.route('/catalog/items/new', methods=['GET', 'POST'])
+@login_required
 def newItem():
     """ show web page where a new item can be added """
-    if 'username' not in login_session:
-        flash("You are not authorized to add new item")
-        return redirect('/login')
     categories = session.query(Category).all()
     if request.method == 'POST':
         if request.form['name'] and request.form['description'] and request.form['cat_name']:
