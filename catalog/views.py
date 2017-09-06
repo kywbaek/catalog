@@ -364,7 +364,7 @@ def newItem():
     return render_template('newItem.html', categories=categories)
 
 
-@app.route('/catalog.json')
+@app.route('/catalog/catalog.json')
 def catalogJSON():
     """ JSON endpoint for catalog """
     categories = session.query(Category).all()
