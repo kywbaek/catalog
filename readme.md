@@ -8,9 +8,9 @@ You will develop a web application that provides a list of items within a variet
 
 | Table | Descriptions | Columns |
 |--------|-----------------|------------|
-| **user** | includes information about the users | name, email, picture, id |
-| **category** | includes information about the categories | name, id |
-| **item** | includes information about the items added by users | name, description, id, cat_id, user_id |
+| **user** | information about the users | name, email, picture, id |
+| **category** | information about the categories | name, id |
+| **item** | information about the items added by users | name, description, id, cat_id, user_id |
 
 ## Approach :
 - Use the Python framework **Flask** to develop a RESTful web application.
