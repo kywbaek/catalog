@@ -18,7 +18,7 @@ You will develop a web application that provides a list of items within a variet
 - Use the Python SQL toolkit **SQLAlchemy** to build the database.
 - Map proper HTTP methods to **CRUD** (create, read, update and delete) operations.
 
-## Usage :
+## Usage (localhost) :
 1. The virtual machine.
     - From the command line, navigate to the folder containing the Vagrantfile
     - Power up the virtual machine by typing: `vagrant up` (note: this may take a couple minutes to complete)
@@ -32,3 +32,6 @@ You will develop a web application that provides a list of items within a variet
     - Open a web browser and type `http://localhost:8000` or `http://0.0.0.0:8000` on the address bar
 5. Endpoints
     - Access `http://localhost:8000/catalog/<data>.json` where `<data>` can be `catalog`, `category`, `item`, or `user`
+
+## Usage (live site) :
+['http://18.216.42.243`](http://18.216.42.243) powered by [**Amazon Web Service Lightsail**](https://amazonlightsail.com/)
