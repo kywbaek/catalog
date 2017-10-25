@@ -34,4 +34,4 @@ You will develop a web application that provides a list of items within a variet
     - Access `http://localhost:8000/catalog/<data>.json` where `<data>` can be `catalog`, `category`, `item`, or `user`
 
 ## Usage (live site) :
-['http://18.216.42.243`](http://18.216.42.243) powered by [**Amazon Web Service Lightsail**](https://amazonlightsail.com/)
+['http://18.216.42.243`](http://18.216.42.243) ([**Amazon Web Service Lightsail**](https://amazonlightsail.com/))
