@@ -2,7 +2,7 @@ _Catalog App_
 ============
 
 ## Project Overview :
-You will develop a web application that provides a list of items within a variety of categories as well as provide a user registration and authentication system. Registered users will have the ability to post, edit and delete their own items.
+Develop a web application that provides a list of items within a variety of categories as well as provide a user registration and authentication system. Registered users will have the ability to post, edit and delete their own items.
 
 ### "catalog" Database Structure :
 
@@ -34,4 +34,4 @@ You will develop a web application that provides a list of items within a variet
     - Access `http://localhost:8000/catalog/<data>.json` where `<data>` can be `catalog`, `category`, `item`, or `user`
 
 ## Usage (live site) :
-['http://18.216.42.243`](http://18.216.42.243) ([**Amazon Web Service Lightsail**](https://amazonlightsail.com/))
+- [www.youngwookbaek.com/catalog](http://www.youngwookbaek.com/catalog/)
