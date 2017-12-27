@@ -34,4 +34,4 @@ Develop a web application that provides a list of items within a variety of cate
     - Access `http://localhost:8000/catalog/<data>.json` where `<data>` can be `catalog`, `category`, `item`, or `user`
 
 ## Usage (live site) :
-- [www.youngwookbaek.com/catalog](http://www.youngwookbaek.com/catalog/)
+- [Catalog App](http://www.youngwookbaek.com/catalog/)
