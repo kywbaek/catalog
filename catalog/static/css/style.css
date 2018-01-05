@@ -19,17 +19,6 @@ header {
     padding-top: 20px;
 }
 
-.app_title {
-    font-weight: 900;
-    font-size: 4em;
-    color: #FFF;
-    padding-bottom: 20px;
-}
-
-.catagory {
-    /*border-right:1px #D3D3D3 solid;*/
-}
-
 .item {
     border-left: 1px #D3D3D3 solid;
     padding-left: 30px;
