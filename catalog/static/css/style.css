@@ -8,6 +8,22 @@ header {
     border-color: #f5f5f5;
 }
 
+a {
+    font-size: 2em;
+    font-weight: 900;
+    color: @link-color;
+    text-decoration: none;
+}
+
+input[type=submit] {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.8em;
+    float: right;
+    background-color: #00000000;
+    border: none;
+}
+
 .header-link {
     color: #fff;
 }
@@ -50,13 +66,6 @@ header {
     color: grey;
 }
 
-a {
-    font-size: 2em;
-    font-weight: 900;
-    color: @link-color;
-    text-decoration: none;
-}
-
 .name {
     font-size: 2em;
     font-weight: 900;
@@ -66,15 +75,6 @@ a {
 .desc {
     margin-top: 20px;
     font-size: 1.5em;
-}
-
-input[type=submit] {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-size: 1.8em;
-    float: right;
-    background-color: #00000000;
-    border: none;
 }
 
 .form {
