@@ -17,6 +17,11 @@ header {
     padding-left: 20px;
 }
 
+.header_row {
+    max-width: 60em;
+    margin: auto;
+}
+
 .body_row {
     padding-top: 20px;
 }
