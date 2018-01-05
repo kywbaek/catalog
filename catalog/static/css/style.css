@@ -68,7 +68,8 @@ a {
 }
 
 input[type=submit] {
-    margin: 0.5em;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .form {
