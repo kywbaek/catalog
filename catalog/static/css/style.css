@@ -50,9 +50,6 @@ header {
     color: grey;
 }
 
-@link-color:       @brand-primary;
-@link-hover-color: darken(@link-color, 15%);
-
 a {
     font-size: 2em;
     font-weight: 900;
