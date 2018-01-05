@@ -3,17 +3,17 @@ body {
     background-color: #b0c4de87;
  }
 
+header {
+    background-color: #000;
+    border-bottom: 10px solid;
+}
+
 .container {
     width: 100vw;
 }
 
 .row {
     padding-left: 20px;
-}
-
-.title_row {
-    background-color: #000;
-    border-bottom: 10px solid;
 }
 
 .body_row {
