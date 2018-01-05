@@ -87,3 +87,9 @@ input:hover {
     font-size: 20px;
     max-width: 100%;
 }
+
+.vr {
+    width: 1px;
+    border-right: 1px #D3D3D3 solid;
+    height: 85vh;
+}
