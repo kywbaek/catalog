@@ -55,6 +55,8 @@ input:hover {
 }
 
 .body_row {
+    max-width: 60em;
+    margin: auto;
     padding-top: 20px;
 }
 
