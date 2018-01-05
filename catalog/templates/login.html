@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-        <div class="row body_row">
+        <main class="row body_row">
             <div class="flash">
                 {% with messages = get_flashed_messages() %}
                     {% if messages %}
@@ -120,7 +120,7 @@
                 <input type="submit" value="Cancel">
               </form>
             </div>
-          </div>
+          </main>
 
         <script src="//apis.google.com/js/platform.js?onload=start"></script>
 {% endblock %}
