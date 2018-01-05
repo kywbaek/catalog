@@ -12,6 +12,11 @@ header {
     color: #fff;
 }
 
+.header-link:focus, .header-link:hover {
+    color: #ffffffa6;
+    text-decoration: none;
+}
+
 .container {
     width: 100vw;
 }
