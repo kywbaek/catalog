@@ -10,9 +10,6 @@ header {
 
 a {
     font-size: 2em;
-    font-weight: 900;
-    color: @link-color;
-    text-decoration: none;
 }
 
 input[type=submit] {
