@@ -15,7 +15,7 @@
 
                 <div class="col-md-4">
                     <ul>
-                        <h2 class="title">Catagories</h2>
+                        <h2>Catagories</h2>
                             {% for category in categories %}
                                 <li><a href="{{url_for('showItems', category_name=category.name)}}">{{ category.name }}</a></li>
                             {% endfor %}
@@ -24,7 +24,7 @@
 
                 <div class="col-md-8">
                     <ol>
-                        <h2 class="title">Latest Items</h2>
+                        <h2>Latest Items</h2>
                             {% for item in latestItems %}
                                 {% for category in categories %}
                                     {% if category.id == item.cat_id %}

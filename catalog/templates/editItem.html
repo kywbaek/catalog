@@ -2,7 +2,7 @@
 {% block content %}
             <main class="row body-row">
                 <div class="col-md-12">
-                    <h2 class="title">Edit Item ({{ curItem.name }})</h2>
+                    <h2>Edit Item ({{ curItem.name }})</h2>
 
                     <form action="{{ url_for('editItem', category_name=curCategory.name, item_name=curItem.name)}}" method = 'post'>
                         <dl>

@@ -3,7 +3,7 @@
             <main class="row body-row">
                 <div class="col-md-4 catagory">
                     <ul>
-                        <h2 class="title">Catagories</h2>
+                        <h2>Catagories</h2>
                             {% for category in categories %}
                                 <li><a href="{{url_for('showItems', category_name=category.name)}}">{{ category.name }}</a>
                                 </li>
@@ -17,10 +17,10 @@
                 <div class="col-md-8 item">
                     <ol>
                         {% if num_items == 0 %}
-                            <h2 class="title">{{ curCategory.name }}  (0 item)</h2>
+                            <h2>{{ curCategory.name }}  (0 item)</h2>
                             <p class="name">You currently have no items for {{ curCategory.name }}</p>
                         {% else %}
-                            <h2 class="title">{{ curCategory.name }}  ({{ num_items }} items)</h2>
+                            <h2>{{ curCategory.name }}  ({{ num_items }} items)</h2>
                                 {% for item in items %}
                                     <li><a href="{{url_for('showItem', category_name=curCategory.name, item_name=item.name)}}">{{ item.name }}</a>
                                     </li>
