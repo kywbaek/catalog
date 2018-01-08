@@ -26,6 +26,10 @@ ul {
     list-style: none;
 }
 
+.font-md {
+    font-size: 18px;
+}
+
 .login-button {
     margin-bottom: 10px;
     font-size: 1.8em;
