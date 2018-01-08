@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
             <main class="row body-row">
-                <div class="col-md-3 catagory">
+                <div class="col-md-4 catagory">
                     <ul>
                         <h2 class="title">Catagories</h2>
                             {% for category in categories %}
@@ -14,7 +14,7 @@
                     </ul>
                 </div>
 
-                <div class="col-md-9 item">
+                <div class="col-md-8 item">
                     <ol>
                         {% if num_items == 0 %}
                             <h2 class="title">{{ curCategory.name }}  (0 item)</h2>
