@@ -60,10 +60,6 @@ input:hover {
     padding-top: 20px;
 }
 
-.item {
-    padding-left: 30px;
-}
-
 .title {
     font-weight: 900;
 }
@@ -88,10 +84,4 @@ input:hover {
 .form {
     font-size: 20px;
     max-width: 100%;
-}
-
-.vr {
-    width: 1px;
-    border-right: 1px #D3D3D3 solid;
-    height: 85vh;
 }
