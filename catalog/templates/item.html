@@ -15,6 +15,7 @@
 
                 <div class="col-md-8 item">
                     <div class="padding-left-xl">
+                        <h2 class="name">{{ curItem.name }}</h2>
                         <p class="desc">{{ curItem.description }}</p>
                         {% if 'username' in session %}
                             <form action="{{url_for('editItem', category_name=curCategory.name, item_name=curItem.name)}}">
