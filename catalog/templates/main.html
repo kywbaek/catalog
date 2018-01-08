@@ -14,13 +14,12 @@
                 </div>
 
                 <div class="col-md-4">
-                    <div>
+                    <ul>
                         <h2 class="title">Catagories</h2>
                             {% for category in categories %}
-                                <a href="{{url_for('showItems', category_name=category.name)}}">{{ category.name }}</a>
-                                <br>
+                                <li><a href="{{url_for('showItems', category_name=category.name)}}">{{ category.name }}</a></li>
                             {% endfor %}
-                    </div>
+                    </ul>
                 </div>
 
 

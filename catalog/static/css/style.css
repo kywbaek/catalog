@@ -31,6 +31,10 @@ input:hover {
     color: #ffffffa6;
 }
 
+ul {
+    list-style: none;
+}
+
 .header-link {
     color: #fff;
 }
