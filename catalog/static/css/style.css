@@ -20,6 +20,13 @@ a:hover {
 
 input[type=submit] {
     margin-top: 20px;
+}
+
+ul {
+    list-style: none;
+}
+
+.login-button {
     margin-bottom: 10px;
     font-size: 1.8em;
     float: right;
@@ -27,12 +34,8 @@ input[type=submit] {
     border: none;
 }
 
-input:hover {
+.login-button:hover {
     color: #ffffffa6;
-}
-
-ul {
-    list-style: none;
 }
 
 .header-link {

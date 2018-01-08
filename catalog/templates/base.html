@@ -40,11 +40,11 @@
                     <div class="col-md-4">
                         {% if 'username' not in session %}
                             <form action="{{url_for('showLogin')}}">
-                                <input type="submit" value="Login">
+                                <input type="submit" value="Login" class="login-button">
                             </form>
                         {% else %}
                             <form action="{{url_for('disconnect')}}">
-                                <input type="submit" value="Logout">
+                                <input type="submit" value="Logout" class="login-button">
                             </form>
                         {% endif %}
                     </div>
