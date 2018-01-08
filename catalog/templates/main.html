@@ -23,12 +23,13 @@
                 </div>
 
                 <div class="col-md-8">
+                    <ol>
                     <h2 class="title">Latest Items</h2>
                         {% for item in latestItems %}
                             {% for category in categories %}
                                 {% if category.id == item.cat_id %}
-                                    <a href="{{url_for('showItem', category_name=category.name, item_name=item.name)}}">{{ item.name }}</a>
-                                    <span class="item_catName">- {{ category.name }}</span><br>
+                                    <li><a href="{{url_for('showItem', category_name=category.name, item_name=item.name)}}">{{ item.name }}</a>
+                                    <span class="item_catName">- {{ category.name }}</span></li>
                                 {% endif %}
                             {% endfor %}
                         {% endfor %}
@@ -38,6 +39,7 @@
                             <input type="submit" value="Add Item">
                         </form>
                     {% endif %}
+                    </ol>
                 </div>
             </main>
 {% endblock %}
