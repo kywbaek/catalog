@@ -2,34 +2,34 @@
 {% block content %}
             <main class="row body-row">
                 <div class="col-md-3 catagory">
-                    <div>
+                    <ul>
                         <h2 class="title">Catagories</h2>
                             {% for category in categories %}
-                                <a href="{{url_for('showItems', category_name=category.name)}}">{{ category.name }}</a>
-                                <br>
+                                <li><a href="{{url_for('showItems', category_name=category.name)}}">{{ category.name }}</a>
+                                </li>
                             {% endfor %}
                         <form action="{{url_for('showMain')}}">
                             <input type="submit" value="Home">
                         </form>
-                    </div>
+                    </ul>
                 </div>
 
                 <div class="col-md-9 item">
-                    <div>
+                    <ol>
                         {% if num_items == 0 %}
                             <h2 class="title">{{ curCategory.name }}  (0 item)</h2>
                             <p class="name">You currently have no items for {{ curCategory.name }}</p>
                         {% else %}
                             <h2 class="title">{{ curCategory.name }}  ({{ num_items }} items)</h2>
                                 {% for item in items %}
-                                    <a href="{{url_for('showItem', category_name=curCategory.name, item_name=item.name)}}">{{ item.name }}</a>
-                                    <br>
+                                    <li><a href="{{url_for('showItem', category_name=curCategory.name, item_name=item.name)}}">{{ item.name }}</a>
+                                    </li>
                                 {% endfor %}
                             {% endif %}
                         <form action="{{url_for('newItem')}}">
                             <input type="submit" value="Add Item">
                         </form>
-                    </div>
+                    </ol>
                 </div>
             </main>
 {% endblock %}
