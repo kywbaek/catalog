@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
             <main class="row body-row">
-                <div class="col-md-3 catagory">
+                <div class="col-md-4 catagory">
                     <div>
                         <h2 class="title">Catagory</h2>
                         <a href="{{url_for('showItems', category_name=curCategory.name)}}">{{ curCategory.name }}</a>
@@ -13,7 +13,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-9 item">
+                <div class="col-md-8 item">
                     <div>
                         <p class="desc">{{ curItem.description }}</p>
                         {% if 'username' in session %}
