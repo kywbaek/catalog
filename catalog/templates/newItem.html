@@ -7,9 +7,9 @@
                     <form action="{{ url_for('newItem')}}" method = 'post'>
                         <dl>
                             <dt>Name:</dt>
-                            <dd><input type ='text' size='80' name='name' placeholder='name' required></dd>
+                            <dd><input type ='text' name='name' placeholder='name' class='stretch-textarea' required></dd>
                             <dt>Description:</dt>
-                            <dd><textarea name ='description' rows='5' cols='80' placeholder="description"></textarea></dd>
+                            <dd><textarea name ='description' rows='5' placeholder="description" class="stretch-textarea"></textarea></dd>
                             <dt>Category:</dt>
                                 {% for category in categories %}
                                     <dd><input type ='radio' name='cat_name' value='{{ category.name }}' required>{{ category.name }}</dd>
