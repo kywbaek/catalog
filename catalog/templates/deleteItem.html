@@ -2,7 +2,7 @@
 {% block content %}
             <main class="row body-row">
                 <div class="col-md-12">
-                    <h2>Delete Item ({{ curItem.name }})</h2>
+                    <h2 class="name">{{ curItem.name }}</h2>
                     <h4>Are you sure you want to delete {{ curItem.name }}?</h4>
 
                     <form action="{{url_for('deleteItem', item_name=curItem.name, category_name=curCategory.name)}}" method="post">
