@@ -20,6 +20,7 @@ a:hover {
 
 input[type=submit] {
     margin-top: 10px;
+    min-width: 75px;
 }
 
 ul {
